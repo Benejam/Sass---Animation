@@ -1,0 +1,98 @@
+@import 'animation.scss';
+
+$colorOne: #244F75;
+$colorTwo: #60BFBF;
+$colorThree: #8C4B7E;
+$colorFour: #F8BB44;
+$colorFive: #F24B4B;
+
+$colors: $colorOne, $colorTwo, $colorThree, $colorFour, $colorFive;
+
+@for $i from 1 through 5 {
+    .block#{$i} {
+        background-color: nth($colors, $i);
+        
+    }
+}
+
+
+$dOne: 0;
+$dTwo: 20vw;
+$dThree: 40vw;
+$dFour: 60vw;
+$dFive: 80vw;
+
+$distance: $dOne, $dTwo, $dThree, $dFour, $dFive;
+
+@for $i from 1 through 5 {
+    .block:nth-child(#{$i}) {
+        left : nth($distance, $i);
+    }
+}
+
+.blocks{
+    min-height: 100vh;
+    text-align: center;
+    overflow: hidden;
+    color: white;
+}
+.block{
+    //will-change: width, left, z-index, height;
+    position: absolute;
+    width: 20%;
+    min-height: 100vh;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+p{
+    font-family: 'Lato', sans-serif;
+    color: white;
+    font-size: 3em;
+}
+
+@for $i from 1 through 5 {
+    .block#{$i} {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      
+
+        animation-name: block#{$i};
+        animation-delay: ($i/10)+s;
+        
+
+        animation-duration: 1s;
+        animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+        animation-fill-mode: both;
+
+    }
+    .block#{$i}:before {
+        content: "";
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: white;
+        opacity: 0.05;
+        transform-origin: center center;
+        transform: skew(30deg) scaleY(1) translate(0,0);
+        transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .block#{$i}:hover:before{
+        transform: skew(0deg) scale(3) translate(0, 0);
+        opacity: 0.1;
+
+    }
+
+}
+
+
