@@ -2,6 +2,6 @@ SASS ANIMATIONS
 
 First contact with sass to practice some animations.
 
-https://github.com/Benejam/Sass---Animation.git
+https://benejam.github.io/Sass---Animation/
 
 Hope you like it!
